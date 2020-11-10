@@ -24,7 +24,9 @@ with open(os.path.join(this_directory, 'README.md')) as f:
 
 
 package_name = "dbt"
-package_version = "0.19.0b1"
+# package_version = "0.19.0b1"
+# Otherwise dbt-utils seems not to work.
+package_version = "0.18.3"
 description = """With dbt, data analysts and engineers can build analytics \
 the way engineers build applications."""
 
@@ -40,6 +42,8 @@ setup(
     author="Fishtown Analytics",
     author_email="info@fishtownanalytics.com",
     url="https://github.com/fishtown-analytics/dbt",
+    # These two lines added so we can install dbt-bigquery from this repo,
+    # rather than PyPI.
     packages=['dbt-bigquery'],
     package_dir={'dbt-bigquery': 'plugins/bigquery'},
     install_requires=[
@@ -47,6 +51,8 @@ setup(
         'dbt-postgres=={}'.format(package_version),
         'dbt-redshift=={}'.format(package_version),
         'dbt-snowflake=={}'.format(package_version),
+        # copied from dbt-bigquery, since setuptools doesn't seem to respect
+        # sub-packages `install_requires`?
         'protobuf>=3.13.0,<4',
         'google-cloud-core>=1.3.0,<2',
         'google-cloud-bigquery>=1.25.0,<2',
