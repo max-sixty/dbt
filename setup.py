@@ -51,14 +51,8 @@ setup(
         'dbt-postgres=={}'.format(package_version),
         'dbt-redshift=={}'.format(package_version),
         'dbt-snowflake=={}'.format(package_version),
-        # copied from dbt-bigquery, since setuptools doesn't seem to respect
-        # sub-packages `install_requires`?
-        'protobuf>=3.13.0,<4',
-        'google-cloud-core>=1.3.0,<2',
-        'google-cloud-bigquery>=1.25.0,<2',
-        'google-api-core>=1.16.0,<2',
-        'googleapis-common-protos>=1.6.0,<2',
-        'six>=1.14.0',
+        # Seems super hacky — surely there's a better way!
+        'dbt-bigquery @ git+https://github.com/max-sixty/dbt/@unlock-google-api-deps-v2#egg=dbt-bigquery&subdirectory=plugins/bigquery',
     ],
     zip_safe=False,
     classifiers=[
