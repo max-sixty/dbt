@@ -48,8 +48,7 @@ setup(
         'dbt-postgres=={}'.format(package_version),
         'dbt-redshift=={}'.format(package_version),
         'dbt-snowflake=={}'.format(package_version),
-        # Seems super hacky — surely there's a better way!
-        'dbt-bigquery @ git+https://github.com/max-sixty/dbt/@unlock-google-api-deps-v2#egg=dbt-bigquery&subdirectory=plugins/bigquery',
+        # dbt-bigquery moved to separate repo, so poetry can install it
     ],
     zip_safe=False,
     classifiers=[
