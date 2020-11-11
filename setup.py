@@ -42,10 +42,7 @@ setup(
     author="Fishtown Analytics",
     author_email="info@fishtownanalytics.com",
     url="https://github.com/fishtown-analytics/dbt",
-    # These two lines added so we can install dbt-bigquery from this repo,
-    # rather than PyPI.
     packages=[],
-    package_dir={},
     install_requires=[
         'dbt-core=={}'.format(package_version),
         'dbt-postgres=={}'.format(package_version),
